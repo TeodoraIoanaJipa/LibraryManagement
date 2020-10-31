@@ -10,5 +10,6 @@ public class Application {
         BookService service = context.getBean(BookService.class);
         service.addBook("Ion", " Liviu", "Rebreanu");
         service.deleteBook(1);
+        service.addBook("We better not meet again, causesjwbxnjnahbjabhsdsjbahjdxhsajdnjasdbhasjdsj", " Liviu", "Rebreanu");
     }
 }
