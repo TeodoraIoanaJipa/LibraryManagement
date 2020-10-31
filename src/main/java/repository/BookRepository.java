@@ -4,6 +4,8 @@ import aspect.BookValidator;
 import model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.AbstractBindingResult;
+import org.springframework.validation.BindingResult;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -17,7 +19,24 @@ public class BookRepository {
 
     private List<Book> allBooks = new ArrayList<Book>();
 
-    public Book addBook(@Valid Book book){
+    public Book addBook(Book book){
+        BindingResult bindingResult = new AbstractBindingResult("book") {
+            @Override
+            public Object getTarget() {
+                return null;
+            }
+
+            @Override
+            protected Object getActualFieldValue(String s) {
+                return null;
+            }
+        };
+        bookValidator.validate(book, bindingResult);
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
+            return null;
+        }
+
         System.out.println("Book added");
         allBooks.add(book);
         return book;

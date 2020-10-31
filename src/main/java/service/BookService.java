@@ -21,7 +21,6 @@ public class BookService {
         newBook.setName(bookName);
         Author author1 = new Author(firstName, lastName);
         newBook.setAuthor(author1);
-        System.out.println("Done");
         bookRepository.addBook(newBook);
     }
 

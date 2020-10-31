@@ -15,6 +15,7 @@ public class BookValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "id.empty", "Id is required.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty", "Name is required.");
         Book b = (Book) o;
         if (b.getName().length() < 2 || b.getName().length() > 30) {

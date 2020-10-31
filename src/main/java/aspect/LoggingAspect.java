@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 
 @Aspect
 @Component
-public class MyAspect {
+public class LoggingAspect {
 
-    private Logger logger = Logger.getLogger(MyAspect.class.getName());
+    private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
     //prima * inseamna ca poate sa returneze orice
     @Around(value = "execution(* service.*.*(..))")
