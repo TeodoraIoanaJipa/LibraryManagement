@@ -1,6 +1,5 @@
 package service;
 
-import aspect.BookValidator;
 import model.Author;
 import model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,7 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-//    @Autowired
-//    private BookValidator bookValidator;
-
-    public void addBook(String bookName, String firstName, String lastName){
+    public void addBook(String bookName, String firstName, String lastName) {
         Book newBook = new Book();
         newBook.setName(bookName);
         Author author1 = new Author(firstName, lastName);
@@ -24,11 +20,15 @@ public class BookService {
         bookRepository.addBook(newBook);
     }
 
-    public void loanBook(Book book){
+    public void loanBook(Book book) {
         bookRepository.lendBook(book);
     }
 
-    public void deleteBook(Integer id){
+    public void returnBook(Book book) {
+        bookRepository.returnBook(book);
+    }
+
+    public void deleteBook(Integer id) {
         bookRepository.deleteBookById(id);
     }
 

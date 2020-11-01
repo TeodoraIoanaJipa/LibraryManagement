@@ -14,7 +14,6 @@ public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    //prima * inseamna ca poate sa returneze orice
     @Around(value = "execution(* service.*.*(..))")
     public void logMessage(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long start = System.currentTimeMillis();

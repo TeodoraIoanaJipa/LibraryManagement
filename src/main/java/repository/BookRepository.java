@@ -31,7 +31,11 @@ public class BookRepository {
                 return null;
             }
         };
-        bookValidator.validate(book, bindingResult);
+        try {
+            bookValidator.validate(book, bindingResult);
+        }catch (Exception exception){
+
+        }
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult);
             return null;
@@ -43,18 +47,21 @@ public class BookRepository {
     }
 
     public void deleteBookById(Integer bookId){
-        System.out.println("Book with id "+ bookId + " deleted");
-    }
-
-    public void returnBook(Book book){
-        book.setAvailable(true);
-        allBooks.add(book);
+        for(Book book:allBooks){
+            if(book.getId().equals(bookId)){
+                allBooks.remove(book);
+                System.out.println("Book with id "+ bookId + " deleted");
+            }
+        }
     }
 
     public void lendBook(Book book){
         book.setAvailable(false);
-        allBooks.remove(book);
     }
 
-    
+    public void returnBook(Book book){
+        book.setAvailable(true);
+    }
+
+
 }
