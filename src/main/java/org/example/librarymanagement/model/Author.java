@@ -1,4 +1,4 @@
-package model;
+package org.example.librarymanagement.model;
 
 import java.util.Date;
 
@@ -37,5 +37,14 @@ public class Author {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 }

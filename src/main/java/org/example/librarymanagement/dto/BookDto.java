@@ -1,24 +1,20 @@
-package model;
+package org.example.librarymanagement.dto;
 
-import org.springframework.lang.NonNull;
-import org.springframework.validation.annotation.Validated;
+import org.example.librarymanagement.model.Author;
+import org.example.librarymanagement.model.Book;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-
-public class Book {
-    private Integer id;
+public class BookDto {
     private String name;
     private Author author;
     private Boolean isAvailable;
 
-    public Integer getId() {
-        return id;
+    public BookDto() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public BookDto(Book book){
+        name = book.getName();
+        author = book.getAuthor();
+        isAvailable = book.getAvailable();
     }
 
     public String getName() {
@@ -44,4 +40,6 @@ public class Book {
     public void setAvailable(Boolean available) {
         isAvailable = available;
     }
+
+
 }

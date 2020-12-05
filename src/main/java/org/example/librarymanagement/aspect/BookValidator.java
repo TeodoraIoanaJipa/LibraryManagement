@@ -1,7 +1,7 @@
-package aspect;
+package org.example.librarymanagement.aspect;
 
-import exceptions.InvalidInputException;
-import model.Book;
+import org.example.librarymanagement.exceptions.InvalidInputException;
+import org.example.librarymanagement.model.Book;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -17,7 +17,7 @@ public class BookValidator implements Validator  {
     @Override
     public void validate(Object o, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "id.empty", "Id is required.");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty", "Name is required.");
+        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty", "Name is required.");
         Book b = (Book) o;
         if (b.getName().length() < 2 || b.getName().length() > 30) {
             try {

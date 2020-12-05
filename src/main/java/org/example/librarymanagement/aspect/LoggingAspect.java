@@ -1,4 +1,4 @@
-package aspect;
+package org.example.librarymanagement.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -14,7 +14,7 @@ public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around(value = "execution(* service.*.*(..))")
+    @Around(value = "execution(* org.example.librarymanagement.service.*.*(..))")
     public void logMessage(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         logger.info("Before executing method named "+ proceedingJoinPoint.getSignature().getName());
